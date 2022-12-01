@@ -9,25 +9,32 @@ namespace CursoUdemy
         static void Main(String[] args)
         {
 
-            Triangulo t1 = new Triangulo();
 
-            double areaTriangulo;
+            Funcionarios func;
+            int idFunc;
+            bool idExiste = false;
 
-            Console.WriteLine("valor do lado A");
-            t1.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            List<Funcionarios> listaFunc = new List<Funcionarios>();
 
-            Console.WriteLine();
-            Console.WriteLine("valor do lado B");
-            t1.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.Write("Quantos funcionarios serao registrados: ");
+            int qtdFuncs = int.Parse(Console.ReadLine());
 
-            Console.WriteLine();
-            Console.WriteLine("valor do lado C");
-            t1.C = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            areaTriangulo = t1.CalcularArea();
+            for (int c = 1; c <= qtdFuncs; c++)
+            {
+                Console.WriteLine("\nFuncionario #" + c);
 
-            Console.WriteLine();
-            Console.WriteLine("Área do triângulo = " + areaTriangulo.ToString("F2", CultureInfo.InvariantCulture));
+                while (!idExiste)
+                {
+                    Console.Write("Id: ");
+                    idFunc = int.Parse(Console.ReadLine());
+
+                    idExiste = listaFunc.Find(func => func.ID == idFunc);
+                }
+                
+
+            }
+
 
         }
 
