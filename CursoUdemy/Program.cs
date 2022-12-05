@@ -9,79 +9,30 @@ namespace CursoUdemy
         static void Main(String[] args)
         {
 
-            int idFunc = 0;
-            bool idExiste;
-            Funcionarios func;
+            Console.Write("Quantidade de linhas: ");
+            int qtdLinhas = int.Parse(Console.ReadLine());
 
-            List<Funcionarios> listaFunc = new List<Funcionarios>();
-
-            Console.Write("Quantos funcionarios serao registrados: ");
-            int qtdFuncs = int.Parse(Console.ReadLine());
+            Console.Write("Quantidade de colunas: ");
+            int qtdColunas = int.Parse(Console.ReadLine());
 
 
-            for (int c = 1; c <= qtdFuncs; c++)
+            int[,] matriz = new int[qtdLinhas, qtdColunas];
+
+
+            for (int linha = 0; linha < qtdLinhas; linha++)
             {
-                idExiste = false;
 
-                Console.WriteLine("\nFuncionario #" + c);
-                while (!idExiste)
+                Console.WriteLine("\n\nLinha " + (linha + 1));
+
+                for (int coluna = 0; coluna < qtdColunas; coluna++)
                 {
-                    Console.Write("Id: ");
-
-                    try
-                    {
-                        idFunc = int.Parse(Console.ReadLine());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Esperava um número e não texto");
-                    }
-
-                    func = listaFunc.Find(f => f.ID == idFunc);
-                    if (func == null)
-                    {
-                        idExiste = true;
-                    }
-                    else
-                    {
-                        idExiste = false;
-                        Console.WriteLine("Id de funcionário já existe, informe outro");
-                    }
-
+                    Console.Write("Coluna " + (coluna + 1) + ": ");
+                    matriz[linha, coluna] = int.Parse(Console.ReadLine());
                 }
-
-                Console.Write("Nome: ");
-                string nome = Console.ReadLine();
-
-                Console.Write("Salário: ");
-                double salario = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-                listaFunc.Add(new Funcionarios(idFunc, nome, salario));
-
             }
 
-
-            Console.Write("\n\nInforme o ID do funcionario que tera aumento de salário: ");
-            idFunc = int.Parse(Console.ReadLine());
-
-
-            func = listaFunc.Find(f => f.ID == idFunc);
-            if (func != null)
-            {
-                Console.Write("\nInforma a porcentagem de aumento: ");
-                double perc = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-                func.AumentarSalario(perc);
-            } else
-            {
-                Console.WriteLine("Funcionario não encontrado!");
-            }
-
-            Console.WriteLine("Lista de funcionários atualizada: ");
-            foreach(Funcionarios f in listaFunc)
-            {
-                Console.WriteLine(f.ToString());
-            }
+            Console.Write("\nInforme um número para buscar: ");
+            int numero = int.Parse(Console.ReadLine());
 
         }
 
