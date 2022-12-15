@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using CursoUdemy.Entities;
+using CursoUdemy.Entities.ENUMs;
 
 namespace CursoUdemy
 {
@@ -9,30 +11,25 @@ namespace CursoUdemy
         static void Main(String[] args)
         {
 
-            Console.Write("Quantidade de linhas: ");
-            int qtdLinhas = int.Parse(Console.ReadLine());
+            Console.Write("Informe o nome do departamento: ");
+            string dept = Console.ReadLine();
 
-            Console.Write("Quantidade de colunas: ");
-            int qtdColunas = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nEnter work data:");
+            Console.Write("Name: ");
+            string nameWorker = Console.ReadLine();
 
+            Console.Write("Level (Junior / MidLevel / Senior): ");
+            string level = Console.ReadLine();
 
-            int[,] matriz = new int[qtdLinhas, qtdColunas];
+            WorkerLevel workerLevel = Enum.Parse<WorkerLevel>(level);
 
+            Console.Write("Base salary: ");
+            double salary = double.Parse(Console.ReadLine());
 
-            for (int linha = 0; linha < qtdLinhas; linha++)
-            {
+            Worker worker = new Worker(nameWorker, workerLevel, salary);
 
-                Console.WriteLine("\n\nLinha " + (linha + 1));
-
-                for (int coluna = 0; coluna < qtdColunas; coluna++)
-                {
-                    Console.Write("Coluna " + (coluna + 1) + ": ");
-                    matriz[linha, coluna] = int.Parse(Console.ReadLine());
-                }
-            }
-
-            Console.Write("\nInforme um número para buscar: ");
-            int numero = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nHow many contracts to this work? ");
+            int qtdContracts = int.Parse(Console.ReadLine());
 
         }
 
