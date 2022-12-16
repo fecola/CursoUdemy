@@ -9,5 +9,10 @@ namespace CursoUdemy.Entities
     internal class Department
     {
         public string Name { get; set; }
+
+        public Department (string nameDept)
+        {
+            Name = nameDept;
+        }
     }
 }
