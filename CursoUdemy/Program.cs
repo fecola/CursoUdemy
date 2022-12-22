@@ -1,38 +1,63 @@
-﻿using System.Globalization;
-using CursoUdemy.Entities;
-using CursoUdemy.Entities.ENUMs;
+﻿using CursoUdemy.Entities;
+using System.Globalization;
 
 namespace CursoUdemy
 {
-
     internal class Program
     {
-
-        static void Main(String[] args)
+        static void Main(string[] args)
         {
 
-            Console.Write("Informe o nome do departamento: ");
-            string dept = Console.ReadLine();
+            Employee employee1;
+            Employee employee2;
+            List<Employee> listEmployee = new List<Employee>();
 
-            Console.WriteLine("\nEnter work data:");
-            Console.Write("Name: ");
-            string nameWorker = Console.ReadLine();
+            Console.Write("Enter the number of employees: ");
+            int numberOfEmployess = int.Parse(Console.ReadLine());
 
-            Console.Write("Level (Junior / MidLevel / Senior): ");
-            string level = Console.ReadLine();
 
-            WorkerLevel workerLevel = Enum.Parse<WorkerLevel>(level);
+            for (int c = 1; c <= numberOfEmployess; c++)
+            {
+                Console.WriteLine($"\nEmployee #{c} data: ");
+                Console.Write("Outsourced? (y/n): ");
+                char outsourced = char.Parse(Console.ReadLine());
 
-            Console.Write("Base salary: ");
-            double salary = double.Parse(Console.ReadLine());
+                Console.Write("Name: ");
+                string nameEmployee = Console.ReadLine();
 
-            Worker worker = new Worker(nameWorker, workerLevel, salary);
+                Console.Write("Hours: ");
+                int hoursEmployee = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nHow many contracts to this work? ");
-            int qtdContracts = int.Parse(Console.ReadLine());
+                Console.Write("value per hour: ");
+                double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                if (outsourced == 'n' || outsourced == 'N')
+                {
+                    employee1 = new Employee(nameEmployee, hoursEmployee, valuePerHour);
+
+                    listEmployee.Add(employee1);
+
+                } else
+                {
+                    Console.Write("Additional charge: ");
+                    double additionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                    employee2 = new OutsourcedEmployee(nameEmployee, hoursEmployee, valuePerHour, additionalCharge);
+
+                    listEmployee.Add(employee2);
+
+                }
+
+            }
+
+
+            Console.WriteLine("\n\nPAYMENT:");
+
+            foreach (Employee employee in listEmployee)
+            {
+                Console.WriteLine(employee);
+            }
 
         }
-
     }
-
 }
