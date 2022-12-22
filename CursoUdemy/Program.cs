@@ -1,4 +1,5 @@
 ﻿using CursoUdemy.Entities;
+using System.Globalization;
 
 namespace CursoUdemy
 {
@@ -7,45 +8,56 @@ namespace CursoUdemy
         static void Main(string[] args)
         {
 
-            Account acc1 = new Account(1001, "Felipe", 500);
-            Account acc2 = new SavingsAccount(1002, "Erika", 500, 0.01);
+            Employee employee1;
+            Employee employee2;
+            List<Employee> listEmployee = new List<Employee>();
 
-            acc1.Withdraw(10);
+            Console.Write("Enter the number of employees: ");
+            int numberOfEmployess = int.Parse(Console.ReadLine());
 
 
-
-            /*
-            Account acc = new Account(1001, "Alex", 0.0);
-            BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0, 500.0);
-
-            // UPCASTING
-
-            Account acc1 = bacc;
-            Account acc2 = new BusinessAccount(1003, "Bob", 0.0, 200.0);
-            Account acc3 = new SavingsAccount(1004, "Anna", 0.0, 0.01);
-
-            // DOWNCASTING
-
-            BusinessAccount acc4 = (BusinessAccount)acc2;
-            acc4.Loan(100.0);
-
-            // BusinessAccount acc5 = (BusinessAccount)acc3;
-            if (acc3 is BusinessAccount)
+            for (int c = 1; c <= numberOfEmployess; c++)
             {
-                //BusinessAccount acc5 = (BusinessAccount)acc3;
-                BusinessAccount acc5 = acc3 as BusinessAccount;
-                acc5.Loan(200.0);
-                Console.WriteLine("Loan!");
+                Console.WriteLine($"\nEmployee #{c} data: ");
+                Console.Write("Outsourced? (y/n): ");
+                char outsourced = char.Parse(Console.ReadLine());
+
+                Console.Write("Name: ");
+                string nameEmployee = Console.ReadLine();
+
+                Console.Write("Hours: ");
+                int hoursEmployee = int.Parse(Console.ReadLine());
+
+                Console.Write("value per hour: ");
+                double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                if (outsourced == 'n' || outsourced == 'N')
+                {
+                    employee1 = new Employee(nameEmployee, hoursEmployee, valuePerHour);
+
+                    listEmployee.Add(employee1);
+
+                } else
+                {
+                    Console.Write("Additional charge: ");
+                    double additionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                    employee2 = new OutsourcedEmployee(nameEmployee, hoursEmployee, valuePerHour, additionalCharge);
+
+                    listEmployee.Add(employee2);
+
+                }
+
             }
 
-            if (acc3 is SavingsAccount)
+
+            Console.WriteLine("\n\nPAYMENT:");
+
+            foreach (Employee employee in listEmployee)
             {
-                //SavingsAccount acc5 = (SavingsAccount)acc3;
-                SavingsAccount acc5 = acc3 as SavingsAccount;
-                acc5.UpdateBalance();
-                Console.WriteLine("Update!");
+                Console.WriteLine(employee);
             }
-            */
+
         }
     }
 }
