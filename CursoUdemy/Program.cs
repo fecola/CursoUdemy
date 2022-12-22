@@ -8,54 +8,58 @@ namespace CursoUdemy
         static void Main(string[] args)
         {
 
-            Employee employee1;
-            Employee employee2;
-            List<Employee> listEmployee = new List<Employee>();
+            List<Product> listProducts = new List<Product>();
 
-            Console.Write("Enter the number of employees: ");
-            int numberOfEmployess = int.Parse(Console.ReadLine());
+            Console.Write("Enter the number of products: ");
+            int numberOfProducts = int.Parse(Console.ReadLine());
 
-
-            for (int c = 1; c <= numberOfEmployess; c++)
+            for (int c = 1; c <= numberOfProducts; c++)
             {
-                Console.WriteLine($"\nEmployee #{c} data: ");
-                Console.Write("Outsourced? (y/n): ");
-                char outsourced = char.Parse(Console.ReadLine());
+
+                Console.WriteLine($"\nProduct #{c} data:");
+
+                Console.Write("Common, used or imported? (c / u / i) ");
+                char typeOfProduct = char.Parse(Console.ReadLine());
 
                 Console.Write("Name: ");
-                string nameEmployee = Console.ReadLine();
+                string nameProduct = Console.ReadLine();
 
-                Console.Write("Hours: ");
-                int hoursEmployee = int.Parse(Console.ReadLine());
+                Console.Write("Price: ");
+                double priceProduct = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                Console.Write("value per hour: ");
-                double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                if (outsourced == 'n' || outsourced == 'N')
+                switch (typeOfProduct)
                 {
-                    employee1 = new Employee(nameEmployee, hoursEmployee, valuePerHour);
+                    case 'c':
+                        listProducts.Add(new Product(nameProduct, priceProduct));
 
-                    listEmployee.Add(employee1);
+                        break;
 
-                } else
-                {
-                    Console.Write("Additional charge: ");
-                    double additionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    case 'i':
+                        Console.Write("Customs fee: ");
+                        double customFee = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                    employee2 = new OutsourcedEmployee(nameEmployee, hoursEmployee, valuePerHour, additionalCharge);
+                        listProducts.Add(new ImportedProducts(nameProduct, priceProduct, customFee));
 
-                    listEmployee.Add(employee2);
+                        break;
+
+                    case 'u':
+                        Console.Write("Manufactured Date: ");
+                        DateTime manufacturedDate = DateTime.Parse(Console.ReadLine());
+
+                        listProducts.Add(new UsedProduct(nameProduct, priceProduct, manufacturedDate));
+
+                        break;
 
                 }
 
             }
 
 
-            Console.WriteLine("\n\nPAYMENT:");
-
-            foreach (Employee employee in listEmployee)
+            Console.WriteLine("\n\nPRICE TAGS:");
+            foreach(Product product in listProducts)
             {
-                Console.WriteLine(employee);
+                Console.WriteLine(product);
             }
 
         }
