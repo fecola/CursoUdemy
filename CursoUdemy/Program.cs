@@ -10,50 +10,55 @@ namespace CursoUdemy
         static void Main(string[] args)
         {
 
-            List<Shape> listShapes = new List<Shape>();
+            double totalTaxes = 0;
+            List<Person> listPersons = new List<Person>();
 
 
-            Console.Write("Enter the number of shapes: ");
-            int numberOfShapes = int.Parse(Console.ReadLine());
+            Console.Write("Enter the number of tax payers: ");
+            int numberPayers = int.Parse(Console.ReadLine());
 
-            for (int c = 1; c <= numberOfShapes; c++)
+            for (int c = 1; c <= numberPayers; c++)
             {
-                Console.WriteLine($"\nShape #{c} data:");
+                Console.WriteLine($"\nTaz payer #{c} data: ");
 
-                Console.Write("Rectangle or Circle (r / c)?: ");
-                char shape = char.Parse(Console.ReadLine().ToUpper());
+                Console.Write("Individual or companu (i / c)? ");
+                char typePerson = char.Parse(Console.ReadLine().ToUpper());
 
-                Console.Write("Color (Black / Blue / Red): ");
-                Color colorShape = Enum.Parse<Color>(Console.ReadLine());
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+
+                Console.Write("Anual income: ");
+                double anualIncome = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
 
-                if (shape == 'C')
+                if (typePerson == 'I')
                 {
-                    Console.Write("Radius: ");
-                    double radius = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    Console.Write("Health expenditures: ");
+                    double helthExpenditures = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                    listShapes.Add(new Circle(radius, colorShape));
+                    listPersons.Add(new PessoaFisica(name, anualIncome, helthExpenditures));
 
-                } else if (shape == 'R')
+                } else if (typePerson == 'C')
                 {
-                    Console.Write("Width: ");
-                    double width = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    Console.Write("Numbers employees: ");
+                    int numbersEmployess = int.Parse(Console.ReadLine());
 
-                    Console.Write("Height: ");
-                    double height = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-                    listShapes.Add(new Rectangle(width, height, colorShape));
+                    listPersons.Add(new PessoaJuridica(name, anualIncome, numbersEmployess));
 
                 }
 
             }
 
 
-            Console.WriteLine("\n\nSHAPE AREAS: ");
-            foreach(Shape shape in listShapes)
+            Console.WriteLine("\n\nTAXES PAID: ");
+            foreach(Person person in listPersons)
             {
-                Console.WriteLine(shape.Area().ToString("F2", CultureInfo.InvariantCulture));
+                totalTaxes += person.CalcularRendaAnual();
+
+                Console.WriteLine(person.Nome + ": R$" + person.CalcularRendaAnual().ToString("F2", CultureInfo.InvariantCulture));
             }
+
+            Console.WriteLine("\nTOTAL TAXES: R$" + totalTaxes.ToString("F2", CultureInfo.InvariantCulture));
 
         }
     }
