@@ -9,7 +9,9 @@ namespace CursoUdemy
 
             Tabuleiro tabuleiro = new Tabuleiro(8, 8);
 
-            Console.WriteLine(tabuleiro);
+            Tela.ImprimirTabuleiro(tabuleiro);
+
+            Console.WriteLine();
 
         }
 
