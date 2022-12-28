@@ -1,5 +1,6 @@
 ﻿using Xadrez;
 using CursoUdemy.Enum;
+using CursoUdemy.Exceptions;
 
 namespace CursoUdemy
 {
@@ -9,15 +10,23 @@ namespace CursoUdemy
         public static void Main(String[] args)
         {
 
-            Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+            try
+            {
+                Tabuleiro tabuleiro = new Tabuleiro(8, 8);
 
-            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0, 0));
-            tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(1, 3));
-            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(2, 4));
+                tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0, 0));
+                tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(1, 3));
+                tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(8, 0));
 
-            Tela.ImprimirTabuleiro(tabuleiro);
+                Tela.ImprimirTabuleiro(tabuleiro);
 
-            Console.WriteLine();
+                Console.WriteLine();
+
+            } catch (TabuleiroException error)
+            {
+                Console.WriteLine(error.Message);
+
+            }
 
         }
 
