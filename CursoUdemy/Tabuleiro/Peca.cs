@@ -5,19 +5,19 @@ namespace CursoUdemy
     internal class Peca
     {
 
-        public Posicao Posicao { get; set; }
-        public Cor Cor { get; protected set; }
-        public int QuantidadeMovimentos { get; protected set; } // Usada para controlar movimentação dos peões
-        public Tabuleiro Tabuleiro { get; protected set; }
+        public Posicao posicao { get; set; }
+        public Cor cor { get; protected set; }
+        public int quantidadeMovimentos { get; protected set; } // Usada para controlar movimentação dos peões
+        public Tabuleiro tabuleiro { get; protected set; }
 
 
 
         public Peca (Tabuleiro tabuleiro, Cor cor)
         {
-            Posicao = null;
-            Tabuleiro = tabuleiro;
-            Cor = cor;
-            QuantidadeMovimentos = 0;
+            posicao = null;
+            this.tabuleiro = tabuleiro;
+            this.cor = cor;
+            quantidadeMovimentos = 0;
         }
 
     }

@@ -6,24 +6,24 @@ namespace CursoUdemy
     internal class Tabuleiro
     {
 
-        public int Linhas { get; set; }
-        public int Colunas { get; set; }
+        public int linhas { get; set; }
+        public int colunas { get; set; }
         private Peca[,] pecas;
 
 
 
         public Tabuleiro (int linhas, int colunas)
         {
-            Linhas = linhas;
-            Colunas = colunas;
-            pecas = new Peca[Colunas, Linhas];
+            this.linhas = linhas;
+            this.colunas = colunas;
+            pecas = new Peca[this.colunas, this.linhas];
         }
 
 
 
         public Peca Peca (Posicao posicao)
         {
-            return pecas[posicao.Linha, posicao.Coluna];
+            return pecas[posicao.linha, posicao.coluna];
         }
 
         public Peca Peca (int linha, int coluna)
@@ -48,14 +48,14 @@ namespace CursoUdemy
                 throw new TabuleiroException("Já existe uma peça nessa posição");
             }
 
-            pecas[posicao.Linha, posicao.Coluna] = peca;
-            peca.Posicao = posicao;
+            pecas[posicao.linha, posicao.coluna] = peca;
+            peca.posicao = posicao;
         }
 
 
         public bool PosicaoValida(Posicao posicao)
         {
-            if (posicao.Linha < 0 || posicao.Linha >= Linhas || posicao.Coluna < 0 || posicao.Coluna >= Colunas)
+            if (posicao.linha < 0 || posicao.linha >= linhas || posicao.coluna < 0 || posicao.coluna >= colunas)
             {
                 return false;
             }
