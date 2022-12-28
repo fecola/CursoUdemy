@@ -5,7 +5,7 @@
 
         public int Linhas { get; set; }
         public int Colunas { get; set; }
-        private Peca[,] Pecas;
+        private Peca[,] pecas;
 
 
 
@@ -13,13 +13,19 @@
         {
             Linhas = linhas;
             Colunas = colunas;
-            Pecas = new Peca[Colunas, Linhas];
+            pecas = new Peca[Colunas, Linhas];
         }
 
 
         public Peca Peca (int linha, int coluna)
         {
-            return Pecas[linha, coluna];
+            return pecas[linha, coluna];
+        }
+
+        public void ColocarPeca(Peca peca, Posicao posicao)
+        {
+            pecas[posicao.Linha, posicao.Coluna] = peca;
+            peca.Posicao = posicao;
         }
 
     }
