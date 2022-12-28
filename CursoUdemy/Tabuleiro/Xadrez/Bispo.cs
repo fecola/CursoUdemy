@@ -12,7 +12,7 @@ namespace Xadrez
 
         public override string ToString()
         {
-            return "B";
+            return " B";
         }
 
     }
