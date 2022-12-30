@@ -53,6 +53,23 @@ namespace CursoUdemy
         }
 
 
+        public Peca RetirarPeca (Posicao posicao)
+        {
+
+            if (Peca(posicao) == null)
+            {
+                return null;
+            }
+
+            Peca aux = Peca(posicao);
+            aux.posicao = null;
+            pecas[posicao.linha, posicao.coluna] = null;
+
+            return aux;
+
+        }
+
+
         public bool PosicaoValida(Posicao posicao)
         {
             if (posicao.linha < 0 || posicao.linha >= linhas || posicao.coluna < 0 || posicao.coluna >= colunas)

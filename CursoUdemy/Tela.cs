@@ -1,4 +1,6 @@
 ﻿using CursoUdemy.Enum;
+using System.Runtime.ConstrainedExecution;
+using Xadrez;
 
 namespace CursoUdemy
 {
@@ -8,9 +10,13 @@ namespace CursoUdemy
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro)
         {
 
+            ConsoleColor aux = Console.ForegroundColor;
+
             for (int l = 0; l < tabuleiro.linhas; l++)
             {
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
                 Console.Write(8 - l + " ");
+                Console.ForegroundColor = aux;
 
                 for (int c = 0; c < tabuleiro.colunas; c++)
                 {
@@ -31,7 +37,9 @@ namespace CursoUdemy
                 Console.WriteLine();
             }
 
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("\n   A  B  C  D  E  F  G  H");
+            Console.ForegroundColor = aux;
 
         }
 
@@ -84,6 +92,18 @@ namespace CursoUdemy
                 Console.Write(peca);
                 Console.ForegroundColor = aux;
             }
+        }
+
+
+        public static PosicaoXadrez LerPosicaoXadrez()
+        {
+
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+
+            return new PosicaoXadrez(coluna, linha);
+
         }
 
     }

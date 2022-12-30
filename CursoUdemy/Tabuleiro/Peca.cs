@@ -20,5 +20,12 @@ namespace CursoUdemy
             quantidadeMovimentos = 0;
         }
 
+
+
+        public void IncrementarQuantidadeMovimento ()
+        {
+            quantidadeMovimentos++;
+        }
+
     }
 }

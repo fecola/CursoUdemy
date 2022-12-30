@@ -12,16 +12,26 @@ namespace CursoUdemy
 
             try
             {
-                Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Vermelha), new Posicao(0, 0));
-                tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Verde), new Posicao(1, 3));
-                tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Laranja), new Posicao(2, 4));
-                tabuleiro.ColocarPeca(new Bispo(tabuleiro, Cor.Preta), new Posicao(0, 6));
 
-                Tela.ImprimirTabuleiro(tabuleiro);
+                while(!partida.terminada)
+                {
 
-                Console.WriteLine();
+                    Console.Clear();
+
+                    Tela.ImprimirTabuleiro(partida.tabuleiro);
+
+                    Console.WriteLine("\n");
+                    Console.Write("Origem: ");
+                    Posicao posicaoOrigem = Tela.LerPosicaoXadrez().ToPosicao();
+
+                    Console.Write("Destino: ");
+                    Posicao posicaoDestino = Tela.LerPosicaoXadrez().ToPosicao();
+
+                    partida.ExecutaMovimento(posicaoOrigem, posicaoDestino);
+
+                }
 
             }
             catch (TabuleiroException error)
