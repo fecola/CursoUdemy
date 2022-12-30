@@ -21,17 +21,8 @@ namespace CursoUdemy
                 for (int c = 0; c < tabuleiro.colunas; c++)
                 {
 
-                    if (tabuleiro.Peca(l, c) == null)
-                    {
-                        Console.Write(" - ");
-                    }
-                    else
-                    {
-                        Tela.ImprimirPeca(tabuleiro.Peca(l, c));
-                        Console.Write(" ");
-                        //Console.Write(tabuleiro.Peca(l, c) + " ");
-                    }
-
+                    Tela.ImprimirPeca(tabuleiro.Peca(l, c));
+                    Console.Write(" ");
                 }
 
                 Console.WriteLine();
@@ -43,54 +34,96 @@ namespace CursoUdemy
 
         }
 
+        public static void ImprimirTabuleiro(Tabuleiro tabuleiro, bool[,] posicoesPossiveis)
+        {
+
+            ConsoleColor aux = Console.ForegroundColor;
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
+
+            for (int l = 0; l < tabuleiro.linhas; l++)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.Write(8 - l + " ");
+                Console.ForegroundColor = aux;
+
+                for (int c = 0; c < tabuleiro.colunas; c++)
+                {
+                    if (posicoesPossiveis[l, c])
+                    {
+                        Console.BackgroundColor = fundoAlterado;
+                    }
+
+                    Tela.ImprimirPeca(tabuleiro.Peca(l, c));
+                    Console.Write(" ");
+                    Console.BackgroundColor = fundoOriginal;
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("\n   A  B  C  D  E  F  G  H");
+            Console.ForegroundColor = aux;
+            Console.BackgroundColor = fundoOriginal;
+
+        }
+
 
 
         public static void ImprimirPeca(Peca peca)
         {
-            if (peca.cor == Cor.Branca)
+            if (peca == null)
             {
-                Console.Write(peca);
+                Console.Write(" -");
+
             } else
             {
-                ConsoleColor cor = ConsoleColor.Black;
-
-                switch(peca.cor.ToString())
+                if (peca.cor == Cor.Branca)
                 {
-                    case "Amarela":
-                        cor = ConsoleColor.Yellow;
+                    Console.Write(peca);
+                } else
+                {
+                    ConsoleColor cor = ConsoleColor.Black;
 
-                        break;
+                    switch (peca.cor.ToString())
+                    {
+                        case "Amarela":
+                            cor = ConsoleColor.Yellow;
 
-                    case "Azul":
-                        cor = ConsoleColor.DarkBlue;
+                            break;
 
-                        break;
+                        case "Azul":
+                            cor = ConsoleColor.DarkBlue;
 
-                    case "Verde":
-                        cor = ConsoleColor.DarkGreen;
+                            break;
 
-                        break;
+                        case "Verde":
+                            cor = ConsoleColor.DarkGreen;
 
-                    case "Vermelha":
-                        cor = ConsoleColor.DarkRed;
+                            break;
 
-                        break;
+                        case "Vermelha":
+                            cor = ConsoleColor.DarkRed;
 
-                    case "Laranja":
-                        cor = ConsoleColor.DarkYellow;
+                            break;
 
-                        break;
+                        case "Laranja":
+                            cor = ConsoleColor.DarkYellow;
 
-                    case "Preta":
-                        cor = ConsoleColor.Yellow;
+                            break;
 
-                        break;
+                        case "Preta":
+                            cor = ConsoleColor.Yellow;
+
+                            break;
+                    }
+
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = cor;
+                    Console.Write(peca);
+                    Console.ForegroundColor = aux;
                 }
-
-                ConsoleColor aux = Console.ForegroundColor;
-                Console.ForegroundColor = cor;
-                Console.Write(peca);
-                Console.ForegroundColor = aux;
             }
         }
 

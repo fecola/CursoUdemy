@@ -13,7 +13,7 @@ namespace Xadrez
 
 
 
-        public PartidaDeXadrez ()
+        public PartidaDeXadrez()
         {
             tabuleiro = new Tabuleiro(8, 8);
             turno = 1;
@@ -24,7 +24,7 @@ namespace Xadrez
 
 
 
-        public void ExecutaMovimento (Posicao posicaoOrigem, Posicao posicaoDestino)
+        public void ExecutaMovimento(Posicao posicaoOrigem, Posicao posicaoDestino)
         {
 
             Peca p = tabuleiro.RetirarPeca(posicaoOrigem);
@@ -50,14 +50,14 @@ namespace Xadrez
             tabuleiro.ColocarPeca(new Bispo(tabuleiro, Cor.Branca), new PosicaoXadrez('f', 1).ToPosicao());
             tabuleiro.ColocarPeca(new Rainha(tabuleiro, Cor.Branca), new PosicaoXadrez('d', 1).ToPosicao());
             tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Branca), new PosicaoXadrez('e', 1).ToPosicao());
-            tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('a', 2).ToPosicao());
-            tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('b', 2).ToPosicao());
-            tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('c', 2).ToPosicao());
-            tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('d', 2).ToPosicao());
-            tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('e', 2).ToPosicao());
-            tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('f', 2).ToPosicao());
-            tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('g', 2).ToPosicao());
-            tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('h', 2).ToPosicao());
+            //tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('a', 2).ToPosicao());
+            //tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('b', 2).ToPosicao());
+            //tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('c', 2).ToPosicao());
+            //tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('d', 2).ToPosicao());
+            //tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('e', 2).ToPosicao());
+            //tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('f', 2).ToPosicao());
+            //tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('g', 2).ToPosicao());
+            //tabuleiro.ColocarPeca(new Peao(tabuleiro, Cor.Branca), new PosicaoXadrez('h', 2).ToPosicao());
 
 
             // Peças Coloridas

@@ -9,6 +9,10 @@ namespace Xadrez
         {
         }
 
+        public override bool[,] MovimentosPossiveis()
+        {
+            throw new NotImplementedException();
+        }
 
         public override string ToString()
         {

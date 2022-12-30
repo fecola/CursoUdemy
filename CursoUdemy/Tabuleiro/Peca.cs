@@ -2,7 +2,7 @@
 
 namespace CursoUdemy
 {
-    internal class Peca
+    internal abstract class Peca
     {
 
         public Posicao posicao { get; set; }
@@ -26,6 +26,10 @@ namespace CursoUdemy
         {
             quantidadeMovimentos++;
         }
+
+
+
+        public abstract bool[,] MovimentosPossiveis();
 
     }
 }

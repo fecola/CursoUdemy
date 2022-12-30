@@ -26,7 +26,13 @@ namespace CursoUdemy
                     Console.Write("Origem: ");
                     Posicao posicaoOrigem = Tela.LerPosicaoXadrez().ToPosicao();
 
-                    Console.Write("Destino: ");
+                    bool[,] posicoesPossiveis = partida.tabuleiro.Peca(posicaoOrigem).MovimentosPossiveis();
+
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.tabuleiro, posicoesPossiveis);
+
+                    Console.WriteLine("\n");
+                    Console.Write("\nDestino: ");
                     Posicao posicaoDestino = Tela.LerPosicaoXadrez().ToPosicao();
 
                     partida.ExecutaMovimento(posicaoOrigem, posicaoDestino);
