@@ -1,6 +1,6 @@
 ﻿namespace CursoUdemy.Services
 {
-    internal class BrazilTaxService
+    internal class BrazilTaxService : ITaxService
     {
 
 

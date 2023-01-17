@@ -33,7 +33,7 @@ namespace CursoUdemy
             double priceDay = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
 
-            RentalService rentalService = new RentalService(priceHour, priceDay);
+            RentalService rentalService = new RentalService(priceHour, priceDay, new BrazilTaxService());
 
             rentalService.ProcessInvoice(rental);
 
